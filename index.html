@@ -10,17 +10,20 @@
     />
     <title>Festival Sónico Libre</title>
     <link rel="icon" href="assets/logo.png" type="image/png" />
-    <link rel="preload" as="image" href="assets/flyer-sonico-libre.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./assets/flyer-sonico-libre.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
     <dialog class="flyer-modal" id="flyer-modal" open aria-label="Afiche del Festival Sónico Libre">
-      <img src="assets/flyer-sonico-libre.jpg" alt="Afiche original del Festival Sónico Libre" />
-      <form method="dialog">
-        <button class="flyer-modal-close" aria-label="Cerrar afiche">Cerrar <span aria-hidden="true">×</span></button>
-      </form>
+      <div class="flyer-modal-art">
+        <img src="./assets/flyer-sonico-libre.jpg" alt="Afiche original del Festival Sónico Libre" />
+        <button class="flyer-modal-close" type="button" aria-label="Minimizar afiche"><span aria-hidden="true">×</span></button>
+      </div>
     </dialog>
+    <button class="flyer-reopen" id="flyer-reopen" type="button" aria-label="Volver a ver el afiche" title="Ver afiche" hidden>
+      <img src="./assets/flyer-sonico-libre.jpg" alt="" />
+    </button>
 
     <div class="cursor" aria-hidden="true"></div>
 

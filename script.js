@@ -2,12 +2,22 @@ const form = document.querySelector('#newsletter');
 const formMessage = document.querySelector('.form-message');
 const subscriptionState = new URLSearchParams(window.location.search).get('suscripcion');
 const flyerModal = document.querySelector('#flyer-modal');
+const flyerClose = document.querySelector('.flyer-modal-close');
+const flyerReopen = document.querySelector('#flyer-reopen');
 
 if (flyerModal) {
-  // The open attribute keeps the artwork visible immediately; upgrade it to a
-  // native modal as soon as this deferred script runs.
-  if (flyerModal.open) flyerModal.close();
+  // Upgrade the initially visible dialog to a native modal.
+  flyerModal.removeAttribute('open');
   flyerModal.showModal();
+
+  flyerClose.addEventListener('click', () => flyerModal.close());
+  flyerModal.addEventListener('close', () => {
+    flyerReopen.hidden = false;
+  });
+  flyerReopen.addEventListener('click', () => {
+    flyerReopen.hidden = true;
+    flyerModal.showModal();
+  });
 
   flyerModal.addEventListener('click', (event) => {
     if (event.target === flyerModal) flyerModal.close();
