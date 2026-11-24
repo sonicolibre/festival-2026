@@ -295,7 +295,7 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none !important; }
   .wind-title-mobile { display: block; }
   .act-losa { aspect-ratio: 460 / 194; }
   .act-siberia { aspect-ratio: 388 / 156; }
-  .act-erratica { aspect-ratio: 474 / 172; }
+  .act-erratica { width: calc(100% - 14px); margin-left: 14px; aspect-ratio: 474 / 172; }
   .act-vaca { aspect-ratio: 432 / 184; }
   .act-aky { aspect-ratio: 340 / 70; }
   .act-vicky { aspect-ratio: 580 / 201; }
