@@ -1,6 +1,27 @@
 const flyerModal = document.querySelector('#flyer-modal');
 const flyerClose = document.querySelector('.flyer-modal-close');
 const flyerReopen = document.querySelector('#flyer-reopen');
+const wordmark = document.querySelector('.wordmark');
+const returnToTopOnReloadKey = 'sonico-return-to-top-on-reload';
+
+if (wordmark) {
+  wordmark.addEventListener('click', (event) => {
+    event.preventDefault();
+    try {
+      sessionStorage.setItem(returnToTopOnReloadKey, '1');
+    } catch {}
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.location.reload();
+  });
+
+  try {
+    if (sessionStorage.getItem(returnToTopOnReloadKey) === '1') {
+      sessionStorage.removeItem(returnToTopOnReloadKey);
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.addEventListener('pageshow', () => window.scrollTo(0, 0), { once: true });
+    }
+  } catch {}
+}
 
 if (flyerModal) {
   // Upgrade the initially visible dialog to a native modal.
