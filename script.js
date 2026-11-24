@@ -1,6 +1,3 @@
-const form = document.querySelector('#newsletter');
-const formMessage = document.querySelector('.form-message');
-const subscriptionState = new URLSearchParams(window.location.search).get('suscripcion');
 const flyerModal = document.querySelector('#flyer-modal');
 const flyerClose = document.querySelector('.flyer-modal-close');
 const flyerReopen = document.querySelector('#flyer-reopen');
@@ -22,15 +19,6 @@ if (flyerModal) {
   flyerModal.addEventListener('click', (event) => {
     if (event.target === flyerModal) flyerModal.close();
   });
-}
-
-if (subscriptionState === 'ok') {
-  formMessage.dataset.state = 'success';
-  formMessage.textContent = 'Recibimos tu suscripción. ¡Gracias!';
-
-  const cleanUrl = new URL(window.location.href);
-  cleanUrl.searchParams.delete('suscripcion');
-  window.history.replaceState({}, '', cleanUrl);
 }
 
 const cursor = document.querySelector('.cursor');

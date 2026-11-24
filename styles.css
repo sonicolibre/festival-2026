@@ -158,64 +158,36 @@ body {
 .act-vicky .vicky-letter:nth-child(3n) { animation-duration: 1.75s; animation-delay: -.71s; }
 .act-vicky .vicky-letter:nth-child(4n) { animation-duration: 1.3s; animation-delay: -.19s; }
 
-.subscribe {
+.subscribe-button {
   position: relative;
   z-index: 6;
-  display: flex;
+  display: inline-flex;
   width: min(470px, 90vw);
   min-height: 64px;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   margin: clamp(48px, 7.5vh, 90px) 0 0;
-  padding: 5px;
-  border: 2px solid #111;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: var(--newsletter-shadow);
-}
-
-.subscribe input[type='email'] {
-  min-width: 0;
-  flex: 1;
-  padding: 0 13px;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: var(--ink);
-  font: 500 14px 'DM Sans', Arial, sans-serif;
-}
-
-.subscribe input::placeholder { color: var(--muted-ink); opacity: 1; }
-.subscribe:focus-within { border-color: #111; box-shadow: 0 0 0 2px rgb(201 0 0 / 8%), var(--newsletter-shadow); }
-
-.subscribe button {
-  position: relative;
+  padding: 0 28px;
   overflow: hidden;
-  min-width: 142px;
   border: 2px solid #111;
   border-radius: 999px;
   background: #111;
   color: #fff;
-  box-shadow: 2px 2px 0 #111;
+  box-shadow: var(--newsletter-shadow);
   font: 600 13px 'DM Sans', Arial, sans-serif;
   letter-spacing: .035em;
+  text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 260ms ease, color 260ms ease, transform 180ms ease;
 }
 
-.subscribe button span:first-child { position: relative; z-index: 1; }
+.subscribe-button > span:first-child { position: relative; z-index: 1; }
 .button-dot { position: absolute; top: 50%; left: 13px; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); transform: translateY(-50%); transition: left 320ms cubic-bezier(.2,.8,.2,1), background 260ms ease, box-shadow 260ms ease; }
-.subscribe button:hover, .subscribe button:focus-visible { background: var(--red); color: #fff; }
-.subscribe button:hover .button-dot, .subscribe button:focus-visible .button-dot { left: calc(100% - 21px); background: #fff; box-shadow: 0 0 0 4px rgb(255 255 255 / 20%); }
-.subscribe button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
-.subscribe[aria-busy='true'] .button-dot { animation: dot-active 700ms ease-in-out infinite alternate; }
-.subscribe button:active { transform: scale(.98); }
-.subscribe button:disabled { cursor: wait; opacity: .7; }
-.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.honeypot input { position: absolute; left: -10000px; }
-.form-message { position: absolute; top: calc(100% + 9px); left: 4px; width: calc(100% - 8px); margin: 0; color: var(--muted-ink); font-size: 12px; line-height: 1.4; text-align: center; }
-.form-message[data-state='success'] { color: #16834b; }
-.form-message[data-state='error'] { color: var(--red); }
+.subscribe-button:hover, .subscribe-button:focus-visible { background: var(--red); color: #fff; }
+.subscribe-button:hover .button-dot, .subscribe-button:focus-visible .button-dot { left: calc(100% - 21px); background: #fff; box-shadow: 0 0 0 4px rgb(255 255 255 / 20%); }
+.subscribe-button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.subscribe-button:active { transform: scale(.98); }
 
 .event-note {
   padding: 20px 20px 27px;
@@ -304,7 +276,7 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none !important; }
   .act-losa .losa-caption { opacity: 1; }
   .aky-label { font-size: 47px; letter-spacing: .5px; }
   .act-aky:hover .aky-label, .act-aky:focus-visible .aky-label { letter-spacing: 2px; transform: scaleX(1.08); }
-  .subscribe { width: 100%; margin: 24px 0 0; }
+  .subscribe-button { width: 100%; margin: 24px 0 0; }
   .event-note { padding: 28px 16px 27px; text-align: center; }
   .event-details { display: none; }
   .cursor { display: none; }
@@ -312,7 +284,7 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none !important; }
 }
 
 @media (max-width: 390px) {
-  .subscribe button { min-width: 118px; font-size: 11px; }
+  .subscribe-button { min-width: 118px; font-size: 11px; }
   .event-note p, .instagram-link { font-size: 11px; }
 }
 
