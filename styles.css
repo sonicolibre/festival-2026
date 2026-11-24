@@ -362,6 +362,7 @@ body.has-custom-cursor, body.has-custom-cursor * { cursor: none !important; }
 }
 
 @media (min-width: 761px) {
+  .event-details { display: none; }
   .act-aky:hover .aky-label, .act-aky:focus-visible .aky-label { font-size: 40px; letter-spacing: 2px; transform: scaleX(1.02); }
 }
 
