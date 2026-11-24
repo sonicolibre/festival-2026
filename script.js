@@ -1,44 +1,27 @@
 const form = document.querySelector('#newsletter');
 const formMessage = document.querySelector('.form-message');
-const submitButton = form.querySelector('button[type="submit"]');
+const subscriptionState = new URLSearchParams(window.location.search).get('suscripcion');
+const flyerModal = document.querySelector('#flyer-modal');
 
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  formMessage.textContent = '';
-  formMessage.removeAttribute('data-state');
-  submitButton.disabled = true;
-  form.setAttribute('aria-busy', 'true');
+if (flyerModal) {
+  // The open attribute keeps the artwork visible immediately; upgrade it to a
+  // native modal as soon as this deferred script runs.
+  if (flyerModal.open) flyerModal.close();
+  flyerModal.showModal();
 
-  const formData = new FormData(form);
-  const fields = Object.fromEntries(formData.entries());
+  flyerModal.addEventListener('click', (event) => {
+    if (event.target === flyerModal) flyerModal.close();
+  });
+}
 
-  try {
-    const response = await fetch('https://formsubmit.co/ajax/sonicolibre7@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(fields),
-    });
+if (subscriptionState === 'ok') {
+  formMessage.dataset.state = 'success';
+  formMessage.textContent = 'Recibimos tu suscripción. ¡Gracias!';
 
-    const result = await response.json();
-    const succeeded = result.success === true || result.success === 'true';
-    if (!response.ok || !succeeded) {
-      throw new Error(result.message || 'No pudimos enviar tu dirección.');
-    }
-
-    form.reset();
-    formMessage.dataset.state = 'success';
-    formMessage.textContent = '¡Listo! Te avisaremos por correo.';
-  } catch (error) {
-    formMessage.dataset.state = 'error';
-    formMessage.textContent = 'No se pudo enviar. Revisá tu conexión e intentá otra vez.';
-  } finally {
-    submitButton.disabled = false;
-    form.removeAttribute('aria-busy');
-  }
-});
+  const cleanUrl = new URL(window.location.href);
+  cleanUrl.searchParams.delete('suscripcion');
+  window.history.replaceState({}, '', cleanUrl);
+}
 
 const cursor = document.querySelector('.cursor');
 const finePointer = window.matchMedia('(pointer: fine) and (min-width: 761px)');

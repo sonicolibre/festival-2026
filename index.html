@@ -10,10 +10,18 @@
     />
     <title>Festival Sónico Libre</title>
     <link rel="icon" href="assets/logo.png" type="image/png" />
+    <link rel="preload" as="image" href="assets/flyer-sonico-libre.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
+    <dialog class="flyer-modal" id="flyer-modal" open aria-label="Afiche del Festival Sónico Libre">
+      <img src="assets/flyer-sonico-libre.jpg" alt="Afiche original del Festival Sónico Libre" />
+      <form method="dialog">
+        <button class="flyer-modal-close" aria-label="Cerrar afiche">Cerrar <span aria-hidden="true">×</span></button>
+      </form>
+    </dialog>
+
     <div class="cursor" aria-hidden="true"></div>
 
     <header class="topbar" aria-label="Sónico Libre">
@@ -107,6 +115,7 @@
         <form class="subscribe" id="newsletter" action="https://formsubmit.co/sonicolibre7@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="Nueva suscripción — Sónico Libre" />
           <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://sonicolibre.github.io/festival-2026/?suscripcion=ok" />
           <label class="sr-only" for="email">Dirección de correo electrónico</label>
           <input
             id="email"
